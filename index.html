@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/main.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Location and Date/Time -->
+        <div class="location-time">
+            <h1 id="location">Location</h1>
+            <p id="time-date"></p>
+        </div>
+
+        <!-- Search City -->
+        <div class="input-div">
+            <input type="text" id="location-input" placeholder="Enter a city">
+            <button id="btn-search"><img src="./img/search.png" alt="Search"></button>
+        </div>
+
+        <!-- Temperature Display -->
+        <div class="temperature-div">
+            <h1 id="temp">---</h1>
+        </div>
+
+        <!-- Weather Visualization -->
+        <div class="weather-visualization-container">
+            <div>
+                <img id="weather-image" src="./img/clear.png" alt="Weather condition symbol">
+            </div>
+            <div class="humidity">
+                <p class="humidity"><img class="humidity-image" src="./img/humidity.png" alt=""> 50%</p>
+                <p>Humidity</p>
+            </div>
+            <div class="wind">
+                <p class="wind-speed"><img src="./img/wind.png" alt="">2km</p>
+                <p>Wind Speed</p>
+            </div>
+        </div>
+
+        <!-- 5-Day Prediction -->
+        <div class="five-days-prediction"></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
