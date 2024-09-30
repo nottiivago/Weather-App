@@ -1,1 +1,52 @@
-/*# sourceMappingURL=main.css.map */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);
+  z-index: -1;
+}
+
+.main-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-time {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.location-time .locationTimeContainer #location {
+  font-size: 100px;
+}
+.location-time #time-date {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: x-large;
+  color: aqua;
+}
+.location-time #visualization-of-time {
+  height: 330px;
+}
+
+.input-div {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 30vw;
+}
+.input-div #location-input {
+  background-color: transparent;
+  border: 1px solid rgb(124, 124, 124);
+}/*# sourceMappingURL=main.css.map */

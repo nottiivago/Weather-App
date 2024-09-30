@@ -6,24 +6,54 @@
     <title>Weather App</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/main.css">
+    <script src="https://kit.fontawesome.com/e79efb3c5e.js" crossorigin="anonymous"></script>
+
 </head>
-<body style="background-color: black; color: aliceblue;">
+<body>
+    
     <div class="main-container">
+       
+       
+       
+       
         <!-- Location and Date/Time -->
         <div class="location-time">
-            <h1 id="location">Location</h1>
+            <div class="locationTimeContainer">
+            <h1 id="location"></h1>
             <p id="time-date"></p>
         </div>
-
-        <!-- Search City -->
-        <div class="input-div">
-            <input type="text" id="location-input" placeholder="Enter a city">
-            <button id="btn-search"><img src="./img/search.png" alt="Search"></button>
+            <img  id="visualization-of-time" src="#" alt="time of day">
         </div>
+
+     
+
+        <div class="input-div mb-3">
+            <button class="btn btn-outline-secondary btn-search" type="button" id="btn-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button class="btn btn-loc btn-outline-secondary" type="button" id="btn-location"><i class="fa-solid fa-location-crosshairs"></i></button>
+            <input type="text" class="form-control" id="location-input" placeholder="Enter a city" aria-label="Enter a city">
+          </div>
+
+
+
+        <!-- <div class="input-div">
+            <input type="text" class="form-control" id="location-input" placeholder="Enter a city">
+            <div class="search-location-btn">
+            <button class="btn-search" id="btn-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        
+            <button class="btn-loc btn-outline-secondary" id="btn-location">
+                <img src="./img/compass.svg" alt="Use Location" >
+            </button>
+            </div>
+          </div> -->
+
 
         <!-- Temperature Display -->
         <div class="temperature-div">
-            <h1 id="temp">---</h1>
+            <button id="toggle">toggle</button>
+            <h1 id="temp"></h1>
+            <img class="thermometer" style="height: 80px;" src="#" alt="">
             <div class="feel">Feels Like</div>
             <h1 id="feels-like"></h1>
         </div>
@@ -31,21 +61,30 @@
         <!-- Weather Visualization -->
         <div class="weather-visualization-container">
             <div>
-                <img id="weather-image" src="./img/clear.png" alt="Weather condition symbol">
+                <img style="height: 100px;"  id="weather-image" src="#" alt="Weather condition symbol">
             </div>
             <div class="humidity">
-                <img class="humidity-image" src="./img/humidity.png" alt="">
+                <img style="height: 100px;" class="humidity-image" src="./img/humidity and wind/humidity.svg" alt="">
                 <p id="humidity">Humidity</p>
             </div>
             <div class="wind">
-                <img class="wind-speed" src="./img/wind.png" alt="">
+                <img style="height: 100px;" class="wind-speed" src="./img/humidity and wind/wind.svg" alt="">
                 <p id="speed-wind"><span>wind speed</span></p>
                 
             </div>
         </div>
 
-        <!-- 5-Day Prediction -->
-        <div class="five-days-prediction"></div>
+        <!-- 5-Day Prediction if i manage it
+        <div class="five-days-prediction">
+           <ul>
+            <li id="day1"></li>
+            <li id="day2"></li>
+            <li id="day3"></li>
+            <li id="day4"></li>
+            <li id="day5"></li>
+           </ul>
+        </div> -->
+    
     </div>
 
     <script src="script.js"></script>
