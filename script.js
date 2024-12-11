@@ -12,7 +12,7 @@ let weatherImage = document.getElementById('weather-image');
 let timeVisualization = document.getElementById('visualization-of-time');
 let toggleBtn = document.getElementById('toggle');
 let thermometer = document.getElementsByClassName('thermometer')[0];
-
+let thermometerFeels = document.getElementsByClassName('thermometer-feels')[0];
 
 const defaultCity = 'Athens';
 
@@ -40,26 +40,27 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Function to update the temperature display
-  
+
   thermometer.src = './img/temp/thermometer-celsius.svg';
+  thermometerFeels.src = './img/temp/thermometer-celsius.svg';
 
   function updateTemperatureDisplay() {
     let temp = parseFloat(tempOutput.innerText);
     let feels = parseFloat(feelsLike.innerText);
     if (isCelsius) {
-      // Convert to Celsius if currently in Fahrenheit
       temp = (temp - 32) * (5 / 9);
       feels = (feels - 32) * (5 / 9);
       tempOutput.innerText = `${Math.round(temp)} `;
       feelsLike.innerText = `${Math.round(feels)} `;
       thermometer.src = `./img/temp/thermometer-celsius.svg`;
+      thermometerFeels.src = `./img/temp/thermometer-celsius.svg`;
     } else {
-      // Convert to Fahrenheit if currently in Celsius
       temp = (temp * 9) / 5 + 32;
       feels = (feels * 9) / 5 + 32;
       tempOutput.innerText = `${Math.round(temp)} `;
       feelsLike.innerText = `${Math.round(feels)} `;
       thermometer.src = `./img/thermometer-fahrenheit.svg`;
+      thermometerFeels.src = `./img/thermometer-fahrenheit.svg`;
     }
   }
 
@@ -69,8 +70,18 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 function updateTimeDate() {
   let now = new Date();
-  let formattedDate = now.toLocaleDateString();
-  let formattedTime = now.toLocaleTimeString();
+
+  let formattedDate = now.toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'long',
+  });
+
+  let formattedTime = now.toLocaleTimeString('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  });
+
   timeDateOutput.textContent = `${formattedDate} ${formattedTime}`;
 }
 
@@ -81,32 +92,43 @@ function updateWeatherUI(data) {
   humidityOutput.innerText = `${data.main.humidity}`;
   feelsLike.innerText = `${Math.round(data.main.feels_like)}`;
 
-  
   let now = new Date();
   let currentHour = now.getHours();
 
   // Time of day logic
   let timeOfDay;
 
-  if (currentHour >= 0 && currentHour < 6) {
-    // Late night and early morning (12 AM to 5:59 AM)
+  if (currentHour >= 0 && currentHour < 3) {
+    
+    timeVisualization.src = 'img/time of day/time-night.svg';
+    timeOfDay = 'night';
+  } else if (currentHour >= 3 && currentHour < 6) {
+    
     timeVisualization.src = 'img/time of day/time-late-night.svg';
     timeOfDay = 'night';
-  } else if (currentHour >= 6 && currentHour < 12) {
-    // Morning (6 AM to 11:59 AM)
+  } else if (currentHour >= 6 && currentHour < 9) {
+    
     timeVisualization.src = 'img/time of day/time-morning.svg';
     timeOfDay = 'day';
-  } else if (currentHour >= 12 && currentHour < 18) {
-    // Afternoon (12 PM to 5:59 PM)
+  } else if (currentHour >= 9 && currentHour < 12) {
+   
     timeVisualization.src = 'img/time of day/time-late-morning.svg';
     timeOfDay = 'day';
-  } else if (currentHour >= 18 && currentHour < 21) {
-    // Evening (6 PM to 8:59 PM)
-    timeVisualization.src = 'img/time of day/time-late-evening.svg';
+  } else if (currentHour >= 12 && currentHour <= 15) {
+   
+    timeVisualization.src = 'img/time of day/time-afternoon.svg';
+    timeOfDay = 'day';
+  } else if (currentHour >= 15 && currentHour <= 18) {
+    
+    timeVisualization.src = 'img/time of day/time-late-afternoon.svg';
+    timeOfDay = 'day';
+  } else if (currentHour >= 18 && currentHour <= 21) {
+    
+    timeVisualization.src = 'img/time of day/time-evening.svg';
     timeOfDay = 'night';
-  } else if (currentHour >= 21 && currentHour <= 23) {
-    // Night (9 PM to 11:59 PM)
-    timeVisualization.src = 'img/time of day/time-late-night.svg';
+  } else if (currentHour >= 21 || currentHour < 0) {
+    
+    timeVisualization.src = 'img/time of day/time-late-evening.svg';
     timeOfDay = 'night';
   }
 
